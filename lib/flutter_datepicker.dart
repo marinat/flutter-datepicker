@@ -25,6 +25,9 @@ class LinearDatePicker extends StatefulWidget {
   final String? locale;
   final bool reversed;
   final bool showMonthName;
+  final bool withDividers;
+  final double dividerHeight;
+  final Color dividerColor;
 
   final bool addLeadingZero;
 
@@ -47,6 +50,9 @@ class LinearDatePicker extends StatefulWidget {
     this.addLeadingZero = false,
     this.reversed = false,
     this.locale,
+    this.withDividers = false,
+    this.dividerHeight = 16,
+    this.dividerColor = Colors.black,
   });
 
   @override
@@ -148,6 +154,12 @@ class _LinearDatePickerState extends State<LinearDatePicker> {
                       "${_selectedYear.toString().padLeft(widget.addLeadingZero ? 4 : 1, "0")}/${_selectedMonth.toString().padLeft(widget.addLeadingZero ? 2 : 1, "0")}");
               });
           }),
+      if (widget.withDividers)
+        Container(
+          color: widget.dividerColor,
+          width: 1,
+          height: widget.dividerHeight,
+        ),
       NumberPicker.integer(
           listViewWidth: widget.columnWidth,
           initialValue: _selectedMonth!,
@@ -170,6 +182,12 @@ class _LinearDatePickerState extends State<LinearDatePicker> {
                       "${_selectedYear.toString().padLeft(widget.addLeadingZero ? 4 : 1, "0")}/${_selectedMonth.toString().padLeft(widget.addLeadingZero ? 2 : 1, "0")}");
               });
           }),
+      if (widget.withDividers)
+        Container(
+          color: widget.dividerColor,
+          width: 1,
+          height: widget.dividerHeight,
+        ),
       Visibility(
         visible: widget.showDay,
         child: NumberPicker.integer(
