@@ -1,8 +1,9 @@
 extension StringExt on int {
-
-  String getMonthName(bool isJalali){
-    if(isJalali)
+  String getMonthName(bool isJalali, [String? locale]) {
+    if (isJalali)
       return this.jalaliMonthName;
+    else if (locale == 'ru')
+      return this.ruMonthName;
     else
       return this.gregorianMonthName;
   }
@@ -88,6 +89,50 @@ extension StringExt on int {
         break;
       case 12:
         return "Dec";
+        break;
+      default:
+        return '$this';
+        break;
+    }
+  }
+
+  String get ruMonthName {
+    switch (this) {
+      case 1:
+        return "Янв";
+        break;
+      case 2:
+        return "Фев";
+        break;
+      case 3:
+        return "Мар";
+        break;
+      case 4:
+        return "Апр";
+        break;
+      case 5:
+        return "Май";
+        break;
+      case 6:
+        return "Июн";
+        break;
+      case 7:
+        return "Июл";
+        break;
+      case 8:
+        return "Авг";
+        break;
+      case 9:
+        return "Сен";
+        break;
+      case 10:
+        return "Окт";
+        break;
+      case 11:
+        return "Ноя";
+        break;
+      case 12:
+        return "Дек";
         break;
       default:
         return '$this';

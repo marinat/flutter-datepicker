@@ -58,9 +58,11 @@ class MyHomePage extends StatelessWidget {
                 monthText: "ماه | month",
                 dayText: "روز | day",
                 showLabels: true,
+                locale: 'ru',
                 columnWidth: 100,
                 showMonthName: true,
-                isJalaali: true,
+                isJalaali: false,
+                reversed: true,
               ),
               ElevatedButton(
                 child: Text(
